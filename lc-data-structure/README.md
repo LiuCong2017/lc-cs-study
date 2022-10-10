@@ -54,7 +54,6 @@
 	      }
 	      L.length--;
 	    }
-
 > > - 定位
 > > > - 平均比较次数 = **(n+1)/2**
 > > > - 时间复杂度: O(n)
@@ -89,6 +88,27 @@
 	      head->next = NULL;
 	      return head;
 	    }
+> > > - 求表长
+> > > 
+        int LengthLinklist(LinkList head)
+	    {
+	      Node * p = head;  //使指针p指向头节点
+	      int count = 0;  //计数器
+	      while(p->next!=NULL)  //指针移动到下一节点
+	      {
+	    p=p->next;
+	    count++;
+	      }
+	      return count; //返回表长
+	    }
+> > > - 读表元素（给定一个序号i,查找线性表的第i个元素）
+> > > 
+Node * GetLinklist(LinkList head, int i)
+{
+  Node *p; //p是工作指针
+  p = head->next;
+}
+
 
 > - 其它链表
 
