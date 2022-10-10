@@ -15,58 +15,60 @@
 > #### 1. 顺序存储
 > - 顺序表
 > > - 定义
-> 
-    Const int MaxSize=100;
-    typedef struct
-    {
-      DataTpe data[MaxSize];
-      int length;
-    }SeqList;
-    SeqList L;
+> > 
+        Const int MaxSize=100;
+	    typedef struct
+	    {
+	      DataTpe data[MaxSize];
+	      int length;
+	    }SeqList;
+	    SeqList L;
 
 > - 运算
 > > - 插入
 > > > - 向后移动元素个数 = **n-i+1**
 > > > - 时间复杂度: O(n)
-> 
-    void InsertSeqList(SeqList L,DataType x,int i)
-    { //将元素插入到L的第i个元素前
-      if(L.length==MaxSize) exit("表已满");
-      if(i<1 || i>L.length+1) exit("位置错");
-      for(j=L.length;j>=i;j--)
-	  {
-    	L.data[j]=L.data[j-1];
-	  }
-      L.data[i-1]=x;
-      L.length++;
-    }
+> > > 
+        void InsertSeqList(SeqList L,DataType x,int i)
+	    { //将元素插入到L的第i个元素前
+	      if(L.length==MaxSize) exit("表已满");
+	      if(i<1 || i>L.length+1) exit("位置错");
+	      for(j=L.length;j>=i;j--)
+	    	  {
+	    	L.data[j]=L.data[j-1];
+	    	  }
+	      L.data[i-1]=x;
+	      L.length++;
+	    }
+
 > > - 删除
 > > > - 向前移动元素个数 = **n-i**
 > > > - 时间复杂度: O(n)
-> 
-    void DeleteSeqList(SeqList L, int i)
-    {
-      if(i<1 || i>L.length) exit("非法位置");
-      for(j=i;j<L.length;j++)
-      {
-      	L.data[j-1] = L.data[j];
-      }
-      L.length--;
-    }
+> > > 
+        void DeleteSeqList(SeqList L, int i)
+	    {
+	      if(i<1 || i>L.length) exit("非法位置");
+	      for(j=i;j<L.length;j++)
+	      {
+	      	L.data[j-1] = L.data[j];
+	      }
+	      L.length--;
+	    }
+
 > > - 定位
 > > > - 平均比较次数 = **(n+1)/2**
 > > > - 时间复杂度: O(n)
-> 
-    int LocateSeqlist(SeqList L, DataType x)
-    {
-      int i=0;
-      while((i<L.length) && (L.data[i]!=x))
-      {
-    	i++;
-      }
-      if(i<L.length) return i+1;
-      else return 0;
-    }
+> > > 
+        int LocateSeqlist(SeqList L, DataType x)
+	    {
+	      int i=0;
+	      while((i<L.length) && (L.data[i]!=x))
+	      {
+	    	i++;
+	      }
+	      if(i<L.length) return i+1;
+	      else return 0;
+	    }
 
 > #### 2. 链接存储
 > - 单链表
@@ -79,14 +81,14 @@
     }Node, *LinkList;
 > > - 运算
 > > > - 初始化(建立一个由头指针和头节点组成的空表)
-> > 
-    LinkList InitiateLinkList()
-    {
-      LinkList head; //头指针
-      head = malloc(sizeof(Node)); //动态构建一结点，它是头节点
-      head->next = NULL;
-      return head;
-    }
+> > > 
+        LinkList InitiateLinkList()
+	    {
+	      LinkList head; //头指针
+	      head = malloc(sizeof(Node)); //动态构建一结点，它是头节点
+	      head->next = NULL;
+	      return head;
+	    }
 
 > - 其它链表
 
