@@ -12,7 +12,7 @@
 > - 时间复杂度
 
 # 二. 线性表
-> #### 顺序存储
+> #### 1. 顺序存储
 > - 顺序表
 > > - 定义
 > 
@@ -68,8 +68,27 @@
       else return 0;
     }
 
-> #### 链接存储
-> - 单链表、循环链表、双向链表、双向循环链表......
+> #### 2. 链接存储
+> - 单链表
+> > - 定义
+> 
+    typedef struct node
+    {
+      DataType data; //数据域
+      struct node * next; //指针域
+    }Node, *LinkList;
+> > - 运算
+> > > - 初始化(建立一个由头指针和头节点组成的空表)
+> >
+    LinkList InitiateLinkList()
+    {
+      LinkList head; //头指针
+      head = malloc(sizeof(Node)); //动态构建一结点，它是头节点
+      head->next = NULL;
+      return head;
+    }
+
+> - 其它链表
 
 # 三. 栈、队列和数组
 
