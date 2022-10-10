@@ -34,9 +34,9 @@
 	      if(L.length==MaxSize) exit("表已满");
 	      if(i<1 || i>L.length+1) exit("位置错");
 	      for(j=L.length;j>=i;j--)
-	    	  {
+	      {
 	    	L.data[j]=L.data[j-1];
-	    	  }
+	      }
 	      L.data[i-1]=x;
 	      L.length++;
 	    }
