@@ -100,20 +100,30 @@
 	      int count = 0;  //计数器
 	      while(p->next!=NULL)  //指针移动到下一节点
 	      {
-	    p=p->next;
-	    count++;
+		    p = p->next;
+		    count++;
 	      }
 	      return count; //返回表长
 	    }
 
 > > > - 读表元素（给定一个序号i,查找线性表的第i个元素）
 > > > 
-Node * GetLinklist(LinkList head, int i)
-{
-  Node *p; //p是工作指针
-  p = head->next;
-}
+	    Node * GetLinklist(LinkList head, int i)
+	    {
+	      Node *p; //工作指针p
+	      p = head->next; //使p指向首节点
+	      int c = 1;
+	      while((c<i) && (p!=NULL)) //当未到i节点且未到尾节点时继续后移
+	      {
+		    p = p->next;
+		    c++;
+	      }
+	      if(i==c) return p;  //找到第i个节点，返回指向该节点的指针
+	      else return NULL;  //i<1 或 i>n,i值不合法，查找失败
+	    }
 
+> > > - 定位（给定表元素的值,找出元素的位置）
+> > > 
 
 > - 其它链表
 
