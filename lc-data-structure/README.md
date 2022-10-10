@@ -16,6 +16,7 @@
 > - 顺序表
 > > - 定义
 > > 
+···cpp
         Const int MaxSize=100;
 	    typedef struct
 	    {
@@ -23,7 +24,7 @@
 	      int length;
 	    }SeqList;
 	    SeqList L;
-
+···
 > - 运算
 > > - 插入
 > > > - 向后移动元素个数 = **n-i+1**
