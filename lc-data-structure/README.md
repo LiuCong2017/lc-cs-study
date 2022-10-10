@@ -71,7 +71,7 @@
 > #### 2. 链接存储
 > - 单链表
 > > - 定义
-> 
+> > 
     typedef struct node
     {
       DataType data; //数据域
@@ -79,7 +79,7 @@
     }Node, *LinkList;
 > > - 运算
 > > > - 初始化(建立一个由头指针和头节点组成的空表)
-> >
+> > 
     LinkList InitiateLinkList()
     {
       LinkList head; //头指针
