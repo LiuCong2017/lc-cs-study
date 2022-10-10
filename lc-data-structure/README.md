@@ -64,7 +64,7 @@
 	      int i=0;
 	      while((i<L.length) && (L.data[i]!=x))
 	      {
-	    	i++;
+		i++;
 	      }
 	      if(i<L.length) return i+1;
 	      else return 0;
@@ -100,8 +100,8 @@
 	      int count = 0;  //计数器
 	      while(p->next!=NULL)  //指针移动到下一节点
 	      {
-	    p=p->next;
-	    count++;
+	        p=p->next;
+	        count++;
 	      }
 	      return count; //返回表长
 	    }
