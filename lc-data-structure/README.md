@@ -54,6 +54,7 @@
 	      }
 	      L.length--;
 	    }
+
 > > - 定位
 > > > - 平均比较次数 = **(n+1)/2**
 > > > - 时间复杂度: O(n)
@@ -71,6 +72,7 @@
 
 > #### 2. 链接存储
 > - 单链表
+
 > > - 定义
 > > 
     typedef struct node
@@ -78,6 +80,7 @@
       DataType data; //数据域
       struct node * next; //指针域
     }Node, *LinkList;
+
 > > - 运算
 > > > - 初始化(建立一个由头指针和头节点组成的空表)
 > > > 
@@ -88,6 +91,7 @@
 	      head->next = NULL;
 	      return head;
 	    }
+
 > > > - 求表长
 > > > 
         int LengthLinklist(LinkList head)
@@ -101,6 +105,7 @@
 	      }
 	      return count; //返回表长
 	    }
+
 > > > - 读表元素（给定一个序号i,查找线性表的第i个元素）
 > > > 
 Node * GetLinklist(LinkList head, int i)
