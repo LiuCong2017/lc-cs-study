@@ -124,7 +124,23 @@
 
 > > > - 定位（给定表元素的值,找出元素的位置）
 > > > 
+	    int LocateLinklist(LinkList head, DataType x)
+	    //求表head中第一个值等于x的节点的序号，若不存在该节点，返回0
+	    {
+	      Node *p = head; //工作指针p
+	      p = p->next; //移动指针p,初始时指向首节点
+	      int i = 0;  //节点序号i,初值为0
+	      while(p != NULL && p->data != x) //访问链表
+	      {
+		    i++;
+		    p = p->next;
+	      }
+	      if(p != NULL) return i+1;
+	      else return 0;
+	    }
 
+> > > - 插入
+> 
 > - 其它链表
 
 # 三. 栈、队列和数组
