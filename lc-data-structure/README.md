@@ -238,6 +238,70 @@
 > > > - (4) p->next = t;
 
 # 三. 栈、队列和数组
+## 1. 栈
+1.1 栈的基本概念
+> - 1.1.1 栈的基本运算
+> > - (1) 初始化 InitStack(S): 构造一个空栈S;
+> > - (2) 判栈空 EmptyStack(S): 若栈S为空栈，则结果为1，否则结果为0；
+> > - (3) 进栈 Push(S,x): 将元素x插入栈S中，使x成为栈S的栈顶元素;
+> > - (4) 出栈 Pop(S): 删除栈顶元素;
+> > - (5) 取栈顶 GetTop(S): 返回栈顶元素;
+
+1.2 栈的顺序实现
+> - 顺序栈
+
+    const int maxsize=6; //顺序栈的容量
+    typedef struct seqstack
+    {
+      DataType data[maxsize]; //存储栈中数据元素的数组
+      int top; //标志栈顶位置的变量
+    }SeqStk;
+
+> - 1.2.1 初始化
+
+	int InitStack(SeqStk *stk)
+	{
+	  stk->top = 0;
+	  return 1;
+	}
+
+> - 1.2.2 判栈空
+
+	int EmptyStack(SeqStk *stk)
+	//若栈为空，返回1，否则返回0
+	{
+	  if(stk->top==0)
+	    return 1;
+	  else return 0;
+	}
+
+> - 1.2.3 进栈
+
+	int Push(SeqStk *stk, DataType x)
+	{
+	  //若栈未满，元素x进栈stk中，否则提示出错信息
+	  if(stk->top == maxsize-1) //判断栈是否满
+	  {
+	    error("栈已满");
+	    return 0;
+	  }
+	  else
+	  {
+	    stk->top++; //栈未满, top值加1
+	    stk->data[stk->top] = x; //元素x进栈
+	    return 1;
+	  }
+
+> - 1.2.4 出栈
+
+
+> - 1.2.5 取栈顶元素
+
+1.3 
+
+## 2. 队列
+
+## 3. 数组
 
 # 四. 树和二叉树
 
