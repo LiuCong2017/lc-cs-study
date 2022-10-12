@@ -71,7 +71,7 @@
 	    }
 
 > ## 2. 链接存储
-> #### 单链表
+> ### 单链表
 
 > > - **定义**
 > > > 
@@ -187,7 +187,7 @@
 	    }
 
 > ## 3. 其它运算在单链表上的实现
-> #### 建表
+> ### 建表
 
 > > - **方法1**
 > > > 
@@ -208,9 +208,34 @@
       return head;
     }
 
+> ## 4. 其它链表
+> ### 单向循环链表与双向循环链表
 
+> > - **双向循环链表的删除与插入**
+> > - 双向循环列表
+> > > - 对称性: p = p->prior->next = p->next->prior
 > 
-> - 其它链表
+    struc dbnode
+    {
+      DataType data;
+      struct dbnode *prior, *next; //prior指向前驱节点,next指向后继节点
+    }
+    typedef struct dbnode *dbpointer;
+    typedef dbpointer DLinkList;
+> > > - 双向循环链表的删除与插入
+> 
+> > > > - 删除
+> 
+> > > - (1) p->prior->next = p->next; //p前驱结点的后链指向p的后继结点
+> > > - (2) p->next->prior = p->prior; //p后继结点的前链指向p的前驱结点
+> > > - (3) free(p); //释放*p的空间
+> 
+> > > > - 插入 (在p所指结点后面插入一个新结点*t,需要修改四个指针)
+> 
+> > > - (1) t->prior = p;
+> > > - (2) t->next = p->next;
+> > > - (3) p->next->prior = t;
+> > > - (4) p->next = t;
 
 # 三. 栈、队列和数组
 
