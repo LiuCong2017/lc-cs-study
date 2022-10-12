@@ -186,6 +186,28 @@
           else exit("找不到药删除的节点"); //节点不存在
 	    }
 
+> ## 3. 其它运算在单链表上的实现
+> #### 建表
+
+> > - **方法1**
+> > > 
+    LinkList CreatLinklist1()
+    //通过调用InitiateLinklist和Insertlinklist实现建表算法，假定0为输入结束标志
+    {
+      Linklist head;
+      int x, i;
+      head = InitiateLinklist(); //建立空表
+      i = 1; //置插入位置初值
+      scanf("%d",&x); //读入第一个数据元素，x为整型
+      while(x!=0) //输入的不是结束标志时继续插入
+      {
+        InsertLinklist(head, x, i); //将输入插入到head表尾
+        i++; //修改插入位置
+        scanf("%d",&x); //读下一个元素
+      }
+      return head;
+    }
+
 
 > 
 > - 其它链表
