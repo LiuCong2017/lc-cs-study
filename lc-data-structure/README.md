@@ -139,7 +139,28 @@
 	      else return 0;
 	    }
 
-> > > - 插入
+> > > - 插入(将给定值为x的元素插入到链表head的第i个节点之前)
+> > > 
+	    void InsertLinklist(LinkList head, DataType x, int i)
+	    {
+	      //在表head的第i个数据元素节点之前插入一个以x为值的新节点
+	      Node *p, *q;
+	      if(i==1) q=head;
+	      else q = GetLinklist(head,i-1); //找到第i-1个元素，并使q指向该节点
+	      if(q == NULLL)  //第i-1个节点不存在
+	      exit("找不到插入的位置");
+	      else
+	      {
+		      p = malloc(sizeof(Node)); p->data=x; //生成新节点
+		      p->next = q->next;  //新结点链域指向*q的后继节点
+		      q->next = p; //修改*q的链域名
+	      }
+	    }
+> > > 解释: 
+>  - p表示ai-1, s表示新节点，
+>  - s->next = p->next; //将原来指向ai的指针赋给s的s->next
+>  - p->next = s; //把指向s的指针赋值给ai-1的p->next
+
 > 
 > - 其它链表
 
