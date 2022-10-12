@@ -12,8 +12,8 @@
 > - 时间复杂度
 
 # 二. 线性表
-> #### 1. 顺序存储
-> - 顺序表
+> ## 1. 顺序存储
+> ### 顺序表
 > > - 定义
 > > 
         Const int MaxSize=100;
@@ -70,18 +70,18 @@
 	      else return 0;
 	    }
 
-> #### 2. 链接存储
-> - 单链表
+> ## 2. 链接存储
+> #### 单链表
 
-> > - 定义
-> > 
+> > - **定义**
+> > > 
     typedef struct node
     {
       DataType data; //数据域
       struct node * next; //指针域
     }Node, *LinkList;
 
-> > - 运算
+> > - **运算**
 > > > - 初始化(建立一个由头指针和头节点组成的空表)
 > > > 
         LinkList InitiateLinkList()
@@ -140,6 +140,12 @@
 	    }
 
 > > > - 插入(将给定值为x的元素插入到链表head的第i个节点之前)
+> 
+> > > 解释: 
+> 
+> > > - p表示ai-1, s表示新节点，
+> > > - s->next = p->next; //将原来指向ai的指针赋给s的s->next
+> > > - p->next = s; //把指向s的指针赋值给ai-1的p->next 
 > > > 
 	    void InsertLinklist(LinkList head, DataType x, int i)
 	    {
@@ -156,10 +162,30 @@
 		      q->next = p; //修改*q的链域名
 	      }
 	    }
+
+> > > - 删除(给定一个值i,将链表中第i个节点从链表中移出，并修改相关节点指针域)
+> 
 > > > 解释: 
->  - p表示ai-1, s表示新节点，
->  - s->next = p->next; //将原来指向ai的指针赋给s的s->next
->  - p->next = s; //把指向s的指针赋值给ai-1的p->next
+> 
+> > > - p表示ai-1, q表示ai，
+> > > - p->next = q->next; //将ai指向下一个节点的指针赋给ai-1指向下一个节点的指针
+> > > - free(q);
+> > > 
+	    void DeleteLinklist(LinkList head, int i)
+	    {
+	      //删除表head的第i个节点
+	      Node *q;
+	      if(i==1) q=head;
+	      else q = GetLinklist(head,i-1); //找到待删节点直接前驱
+	      if(q !== NULLL && q->next!=NULL)  //若直接前驱存在且待删节点存在
+	      {
+		      p = q->next; //p指向待删节点
+		      q->next = p->next;  //移出待删节点
+		      free(p); //释放已移出节点p的空间
+	      }
+          else exit("找不到药删除的节点"); //节点不存在
+	    }
+
 
 > 
 > - 其它链表
