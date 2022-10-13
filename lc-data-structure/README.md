@@ -347,11 +347,43 @@
 
 >> - 2.2 判栈空
 
-int EmptyStack(LkStk *LS)
-//若栈为空则
-{
+	int EmptyStack(LkStk *LS)
+	//若栈为空则返回值1，否则返回值0
+	{
+	  if(LS->next == NULL)
+	    return 1;
+	  else
+	    return 0;
+	}
 
-}
+>> - 2.3 进栈
+
+	void Push(LkStk *LS, DataType x)
+	{
+	  LkStk *temp;
+	  temp=(LkStk *)malloc(sizeof(LkStk)); //temp指向申请的新结点
+	  temp->data = x; //新结点的data域赋值为x
+	  temp->next = LS->next; //temp的next域指向原来的栈顶结点
+	  LS->next = temp; //指向新的栈顶结点
+	}
+
+>> - 2.4 出栈
+
+	int Pop(LkStk *LS)
+	//栈顶数据元素通过参数返回，它的直接后继成为新的栈顶
+	{
+	  LkStk *temp;
+	  if(!EmptyStack(LS)) //判断栈是否为空
+	  {
+	    temp = LS->next; //temp指向栈顶结点
+	    LS->next = temp->next; //原栈顶的下一个结点成为新的栈顶
+	    free(temp);
+	    return 1;
+	  }
+	  else return 0;
+	}
+
+>> - 2.5 取栈顶元素
 
 
 ## 2. 队列
