@@ -294,8 +294,31 @@
 
 > - 1.2.4 出栈
 
+	int Pop(SeqStk *stk)
+	{
+	  if (EmptyStack(stk)) //判断是否下溢(栈空)
+	  {
+	    error("下溢");
+	    return 0;
+	  }
+	  else //未下溢，栈顶元素出栈
+	  {
+	    stk->top--; //top值减1
+	    return 1;
+	  }
+	}
 
 > - 1.2.5 取栈顶元素
+
+	DataType GetTop(SeqStk *stk)
+	//取栈顶数据元素，栈顶数据元素通过参数返回
+	{
+	  if (EmptyStack(stk)) return NULLData; //栈空,返回NULLData
+	  else
+	    return stk->data[stk->top]; //返回栈顶数据元素
+	}
+
+
 
 1.3 
 
