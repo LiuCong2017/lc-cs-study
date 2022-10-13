@@ -328,8 +328,30 @@
 	}DbStk;
 
 #### 1.3 栈的链接实现
-> - 定义
+> - 1. 定义
 
+	typedef struct node
+	{
+	  DataType data;
+	  struct node *next;
+	}LkStk;
+
+> - 2. 运算
+> > - 2.1 初始化
+
+	void InitStack(LkStk *LS)
+	{
+	  LS = (LkStk *)malloc(sizeof(LkStk)); //建立空栈
+	  LS ->next = NULL; //将该结点的next域设置为NULL
+	}
+
+>> - 2.2 判栈空
+
+int EmptyStack(LkStk *LS)
+//若栈为空则
+{
+
+}
 
 
 ## 2. 队列
