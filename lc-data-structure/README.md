@@ -377,7 +377,7 @@
 	  {
 	    temp = LS->next; //temp指向栈顶结点
 	    LS->next = temp->next; //原栈顶的下一个结点成为新的栈顶
-	    free(temp);
+	    free(temp); //释放原栈顶结点空间
 	    return 1;
 	  }
 	  else return 0;
