@@ -385,6 +385,54 @@
 
 >> - 2.5 取栈顶元素
 
+    DataType GetTop(LkStk *LS)
+    {
+      if(!EmptyStack(LS)) 
+        return LS->next->data; //若栈非空，返回栈顶数据元素
+      else return NULLData; //否则返回空元素
+    }
+
+>> - 2.6 栈的简单应用和递归
+>>> - 2.6.1 应用举例
+
+    //1. 将A~K反序输出
+    const int maxsize=50;
+    typedef struct seqstack
+    {
+      char data[maxsize];
+      int top;
+    }SeqStk;
+    main()
+    {
+      SeqStk stk;
+      int i;
+      char ch;
+    
+      InitStack(&stk);
+      for(ch='A';ch<='A'+10;ch++)
+      {
+        Push(&stk,ch); //将A~K进栈stk
+        printf("%c",ch);
+      }
+      printf("\n);
+      while(!EmptyStack(&stk))
+      {
+        ch=GetTop(&stk);
+        Pop(&stk); //将K~A依次出栈
+        printf("%c",ch);
+      }
+      printf("\n");
+    }
+
+    //2. 将带头结点的单链表逆置
+    void ReverseLis(LkStk *head)
+    {
+      LkStk *S;
+      DataType x;
+      InitStack(S); //初始化链栈
+      p = head
+    }
+
 
 ## 2. 队列
 
