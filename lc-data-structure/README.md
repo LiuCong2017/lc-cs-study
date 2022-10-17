@@ -430,9 +430,44 @@
       LkStk *S;
       DataType x;
       InitStack(S); //初始化链栈
-      p = head
+      p = head->next;
+      while(p!=NULL) //扫描链表
+      {
+        Push(S,p->data); //元素进栈
+        p = p->next;
+      }
+      p = head->next;
+      while(!EmptyStack(S)) //栈不为空时
+      {
+        p->data = GetTop(S); //元素填入单链表中
+        Pop(S); //出栈
+        p = p->next;
+      }
     }
 
+>> - 2.6.2 递归与栈
+
+    //计算阶乘函数的递归算法描述
+    long f(int n) //f表示求n!的函数
+    {
+      if(n==0) return 1; //递归的结束条件0!=1
+      else return n*f(n-1); //递归步骤 - n*(n-1)! 
+    }
+    
+    //完整程序
+    #include <stdio.h>
+    long f(int n)
+    {
+      if(n==0) return 1;
+      else return n*f(n-1);
+    }
+    
+    main()
+    {
+      int m, n=3; //设n=3,求3!
+      m = f(n);
+      printf("%d=%d\n",n,m);
+    }
 ## 2. 队列
 #### 2.1 顺序队列
 > - 2.1.1 定义
@@ -676,7 +711,8 @@
 >>> - (2) 深度为k(k>=1)的二叉树至多有2^(k-1)个结点
 >>> - (3) 对任何一颗二叉树，若度数为0的结点(叶结点)个数为n0,度数为2的结点个数为n2,则 n0=n2+1
 >>> - (4) 含有n个结点的完全二叉树的深度为[log2^n]+1 ([] -> 向下取整)
->>> - (5) 
+>>> - (5) 在完全二叉树中，结点i的双亲为i/2,结点i的左孩子 Lchild(i)=2i, 结点i的右孩子 Rchild(i)=2i+1
+
 
 # 5. 图
 
