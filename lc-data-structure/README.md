@@ -582,6 +582,40 @@
       LQ->rear = temp; //置新的队列尾结点
     }
 
+>>> - 出队列
+
+    OutQueue(LkQue *LQ)
+    {
+      LkQueNode *temp;
+      if(EmptyQueue(CQ)) //判队列是否为空
+      {
+        error("队空");
+        return 0; //队列为空
+      } 
+      else //队列非空
+      {
+        temp = (LQ->front)->next; //使temp指向队列的首节点
+        (LQ->front)->next = temp->next; //修改头节点的指针域指向新的首节点
+        if(temp->next == NULL) LQ->rear = LQ->front; //无首节点时，front和rear都指向头节点
+        free(temp);
+        return 1;
+      }
+    }
+
+>>> - 取队列首元素
+
+    DataType GetHead(LkQue LQ)
+    {
+      LkQueNode *temp;
+      if(EmptyQueue(CQ))
+        return NULLData; //队列为空，返回空数据标志
+      else
+        temp = LQ.front->next;
+        return temp->data; //队列非空，返回队列首节点元素
+    }
+
+
+
 
 
 
