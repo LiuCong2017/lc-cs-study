@@ -433,8 +433,78 @@
       p = head
     }
 
-
 ## 2. 队列
+#### 2.1 顺序队列
+> - 2.1.1 定义
+
+    const int maxsize = 20;
+    typedef struct seqqueue
+    {
+      DataType data[maxsize]; //data域(一维数组), 存储队列数据元素
+      //font和rear为整形变量，取值范围0~(maxsize-1)
+      int front, rear; //front指向队列首元素的前一个单元，rear指向队列尾元素
+    }SeqQue;
+    SeqQue SQ;
+
+>> - (1) 入队操作: 
+>>> - SQ.rear = SQ.rear+1;
+>>> - SQ.data[SQ.rear] = x;
+>> - (2) 出队操作:
+>>> - SQ.front = SQ.front+1;
+
+#### 2.2 循环队列
+> - 2.2.1 定义
+
+    typedef struct cycqueue
+    {
+      DataType data[maxsize];
+      int front,rear;
+    }CycQue;
+    CycQue CQ;
+
+>> - (1) 入队操作:
+>>> - SQ.rear = (SQ.rear+1) % maxsize;
+>>> - SQ.data[SQ.rear] = x;
+>> - (2) 出队操作:
+>>> - SQ.front = (SQ.front+1) % maxsize;
+>> - (3) 队列满条件:
+>>> - (CQ.rear+1) % maxsize == CQ.front
+>> - (4) 队列空条件:
+>>> - CQ.rear == CQ.front
+
+> - 2.2.2 基本运算
+>> - (1) 队列的初始化
+
+    void InitQueue(CycQue CQ)
+    {
+      CQ.front = 0;
+      CQ.rear = 0;
+    }
+
+>> - (2) 判队列空
+
+    int EmptyQueue(CycQue CQ)
+    {
+      if(CQ.rear == CQ.front) return 1; //队列为空，返回1
+      else return 0; //队列不为空，返回0
+    }
+
+>> - (3) 入队列
+
+    int EnQueue(CyQue CQ, DataType x)
+    {
+      if((CQ.rear+1)%maxsize == CQ.front)
+      {
+        error("队列满"); return 0; //队列满，入队列失败
+      }
+      else
+      {
+        CQ.rear = (CQ.rear+1) % maxsize;
+        CQ.data[CQ.rear] = x;
+        return 1; //入队列成功
+      }
+    }
+
 
 ## 3. 数组
 
