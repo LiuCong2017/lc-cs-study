@@ -505,6 +505,36 @@
       }
     }
 
+>> - (4) 出队列
+
+    int OutQueue(CycQue CQ)
+    {
+      if(EmptyQueue(CQ)) //判断队列是否为空
+      {
+        error("队列空"); return 0;
+      }
+      else
+      {
+        CQ.front = (CQ.front+1) % maxsize;  //不为空，出队列
+        return 1;
+      }
+    }
+
+>> - (5) 取队列首元素
+
+    DataType GetHead(CyQue CQ)
+    {
+      if(EmptyQueue(CQ))
+      {
+        return NULLData; //队列为空，返回空数据标志
+      }
+      else
+      {
+        return CQ.data[(CQ.front+1)%maxsize];
+      }
+    }
+
+
 
 ## 3. 数组
 
