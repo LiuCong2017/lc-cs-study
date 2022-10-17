@@ -719,7 +719,25 @@
 
 ### 3. 二叉树的存储结构
 #### 3.1 二叉树的顺序存储结构
+> - 二叉链表
 
+    typedef struct btnode
+    {
+      DataType data; //数据域
+      struct btnode *lchild, *rchild; //指向左右孩子的指针
+    }*BinTree;
+    BinTree root; //root为指向根结点的指针，Bintree为指向二叉链表结点的指针类型,root=NULL则二叉树为空
+    
+> - 三叉链表
+
+    typedef struct ttnode
+    {
+      DataType data;
+      struct ttnode *lchild,*parent,*rchild; //指针域parent指向该结点的双亲
+    }*TBinTree;
+    TBinTree root; //指向根结点的根指针
+
+### 4. 二叉树的遍历
 
 
 #### 3.2 二叉树的链式存储结构
