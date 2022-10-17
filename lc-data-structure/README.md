@@ -535,7 +535,20 @@
     }
 
 #### 2.3 队列的链接实现
-> - 
+> - 链接队列
+>> - 定义
+
+    typedef struct LinkQueueNode
+    {
+      DataType data;
+      struct LinkQueueNode *next;
+    }LkQueNode;
+    typedef struct LkQueue
+    {
+      LkQueNode *front, *rear;
+    }LkQue LQ;
+
+
 
 
 
