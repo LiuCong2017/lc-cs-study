@@ -578,6 +578,8 @@
       temp = (LkQueNode *)malloc(sizeof(LkQueNode));
       temp->data = x;
       temp->next = NULL;
+      (LQ->rear)->next = temp; //新结点入队列
+      LQ->rear = temp; //置新的队列尾结点
     }
 
 
