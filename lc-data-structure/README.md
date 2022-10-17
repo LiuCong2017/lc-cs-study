@@ -19,7 +19,7 @@
         Const int MaxSize=100;
 	    typedef struct
 	    {
-	      DataTpe data[MaxSize];
+	      DataType data[MaxSize];
 	      int length;
 	    }SeqList;
 	    SeqList L;
