@@ -614,12 +614,32 @@
         return temp->data; //队列非空，返回队列首节点元素
     }
 
-
-
-
-
-
 ## 3. 数组
+#### 3.1 数组的逻辑结构和基本运算
+#### 3.2 数组的存储结构
+#### 3.3 矩阵的压缩存储
+> - 3.3.1 特殊矩阵
+>> - (1) 对称矩阵
+>> - (2) 三角矩阵
+
+> - 3.3.2 稀疏矩阵
+>> - 三元组: (i,j,v) i-行 j-列 v-非零元素
+>>> - 三元组的类型说明
+
+    const int maxnum=10
+    typedef struct node
+    {
+      int i,j; //非零元所在行号、列号
+      DataType v; //非零元的值
+    }NODE;
+    typedef struct SpMatrix
+    {
+      int mu,nu,tu; //行数、列数、非零元素的个数
+      NODE data[maxnum]; //这里假定三元组的下标的起始值为0
+    }SpMtx;
+
+
+
 
 # 四. 树和二叉树
 
