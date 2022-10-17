@@ -548,6 +548,37 @@
       LkQueNode *front, *rear;
     }LkQue LQ;
 
+>> - 基本运算
+>>> - 初始化
+
+    void InitQueue(LkQue *LQ)
+    {
+      LkQueNode *temp;
+      temp = (LkQueNode *)malloc(sizeof(LkQueNode)); //生成队列的头节点
+      LQ->front = temp; //队列头指针指向队列头节点
+      LQ->rear = temp; //队列尾指针指向队列尾节点
+      (LQ->front)->next = NULL;
+    }
+
+>>> - 判队列空
+
+    int EmptyQueue(LkQue LQ)
+    {
+      if(LQ.rear==LQ.front)
+        return 1;
+      else
+        return 0;
+    }
+
+>>> - 入队列
+
+    void EnQueue(LkQue *LQ, DataType x)
+    {
+      LkQueNode *temp;
+      temp = (LkQueNode *)malloc(sizeof(LkQueNode));
+      temp->data = x;
+      temp->next = NULL;
+    }
 
 
 
