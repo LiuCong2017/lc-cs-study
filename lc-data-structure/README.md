@@ -751,14 +751,143 @@
 >>> - (2) 先序遍历左子树
 >>> - (3) 先序遍历右子树
 
+    //visit(bt)是一个已定义的过程，功能是访问指针bt所指结点
+    void preorder(BinTree bt)
+    //先序遍历根指针为bt的二叉树
+    {
+      if(bt!=NULL)
+      {
+        visit(bt); //访问根结点bt
+        preorder(bt->lchild); //先序遍历左子树
+        preorder(bt->rchild); //先序遍历右子树
+      }
+    }
+
 > - 4.1.2 中序遍历(LDR) - 先访问左孩子，再访问本节点，最后访问右孩子
 >>> - (1) 中序遍历左子树
 >>> - (2) 访问根结点
 >>> - (3) 中序遍历右子树
 
+    void inorder(BinTree bt)
+    //中序遍历根指针为bt的二叉树
+    {
+      if(bt!=NULL)
+      {
+        inorder(bt->lchild); //中序遍历左子树
+        visit(bt); //访问根结点bt
+        inorder(bt->rchild); //中序遍历右子树
+      }
+    }
+
 > - 4.1.3 后序遍历(LRD) -先访问左右孩子，最后访问本节点
 
+    void postorder(BinTree bt)
+    //后序遍历根指针为bt的二叉树
+    {
+      if(bt!=NULL)
+      {
+        postorder(bt->lchild); //后序遍历左子树
+        postorder(bt->rchild); //后序遍历右子树
+        visit(bt); //访问根结点bt
+      }
+    }
 
+> - 4.1.4 层次遍历
+
+    void levelorder(BinTree bt)
+    {
+      LkQue Q;
+      InitQueue(&Q); //初始化队列
+      if(bt != NULL)
+      {
+        EnQueue(&Q,bt); //根结点入队列
+        while(!EmptyQueue(Q))
+        {
+          p=Gethead(&Q);
+          outQueue(&Q); //结点出队列
+          visit(p); //被访问结点
+          if(p->lchild!=NULL) EnQueue(&Q,p->lchild); //左孩子结点入队列
+          if(p->rchild!=NULL) EnQueue(&Q,p->rchild); //右孩子结点入队列
+        }
+      }
+    }
+
+> - 4.1.5 二叉树遍历的非递归实现
+
+    void PreOrder(BinTree t)
+    //非递归先序遍历二叉树
+    {
+      BinTree p;
+      LkStk *LS; //LS为指向链栈的指针
+      if(t==NULL) return;
+      InitStack(LS);
+      p = t;
+      while(p!=NULL || !EmptyStack(LS)) //循环条件是当指针或栈至少有一个不为空
+      {
+        if(p!=NULL)
+        {
+          Visit(p->data); //访问结点的数据
+          Push(LS,p); //将当前指针压入栈中
+          p = p->lchild; //将指针指向p的左孩子
+        }
+        else
+        {
+          p = Gettop(LS); //取栈顶元素
+          Pop(LS); //出栈
+          p = p->rchild; //指针指向它的右孩子
+        }
+      }
+    }
+
+> - 4.1.6 应用举例
+>>> - 已知中序和后序遍历，构建树 (比如：已知一颗二叉树的中序序列与后序序列分别为: BACDEFGH和BCAEDGHF，建立该二叉树）
+>>> - 已知先序和中序遍历，构建树 (比如: 先序ABCDEF，中序CBDAFE，求二叉树)
+
+### 5. 树和森林
+#### 5.1 树的存储结构
+> - 5.1.1 孩子链表表示法
+
+    const int MAXND=20; //树中结点的最大个数
+    typedef struct bnode //表结点类型
+    {
+      int child; //孩子结点在表头数据组中的序号
+      struct bnode *next; //表结点指针域
+    }node, *childlink;
+    typedef struct //头结点类型
+    {
+      DataType data; //结点数据元素
+      childlink hp; //头结点指针域
+    }headnode;
+    headnode link[MAXND] //表头结点数组
+
+    //带双亲的孩子链表表示法,只需将头节点的定义改为:
+    typedef struct
+    {
+      DataType data;
+      int parent;
+      childlink hp;
+    }headnode;
+
+> - 5.1.2 孩子兄弟链表表示法
+
+    typedef struct tnode
+    {
+      DataType data;
+      struct tnode *son, *brother; //指向孩子和兄弟指针
+    }*Tree;
+
+> - 5.1.3 双亲表示法
+
+    const int size=10; //定义结点数
+    typedef struct
+    {
+      DataType data; //数据域
+      int parent; //双亲域
+    }Node;
+    Node slist[size]; //用数组实现双亲表
+
+#### 5.2 树、森林与二叉树的关系
+> - 5.2.1 树转换成二叉树
 
 # 5. 图
 
