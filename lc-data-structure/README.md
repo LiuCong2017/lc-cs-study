@@ -917,7 +917,59 @@
 
 ### 6. 判定树和哈夫曼树
 #### 6.1 分类与判定树
+#### 6.2 哈夫曼(Huffman)树与哈夫曼算法
 
+    //哈夫曼树结构
+    const int n=10;
+    typedef struct
+    {
+      float w; //权值
+      int parent,lchild,rchild; //指针域
+    }node;
+    typedef node hftree[2*n-1];
+
+    //哈夫曼算法
+    void Huffman(int k, float w[], hftree T) //参数k表示构造哈夫曼树之前给定的权值个数
+    //对给的的一组权值w的哈夫曼树T
+    {
+      int i,j,x,y;
+      float m,n;
+      for(i=0;i<2*k-1;i++)
+      { //置初态
+        T[i].parent = -1;
+        T[i].lchild = -1;
+        T[i].rchild = -1;
+        if(i<k) T[i].w = w[i];
+        else T[i].w = 0;
+      }
+      for(i=0;i<k-1;i++) //构造新的二叉树
+      {
+        x=0; y=0;
+        m=MAX; n=MAX; //MAX为计算机能表示的一个较大的值
+        for(j=0;j<k+i;j++) //找两颗权值最小的二叉树
+        {
+          if((T[j].w<m) && (T[j].parent==-1))
+          {
+            n=m;
+            y=x;
+            m=T[j].w;
+            x=j;
+          }
+          else if((T[j].w<n) && (T[j].parent==-1))
+          {
+            n=T[j].w;
+            y=j;
+          }
+        }
+        //合并成一颗新的二叉树
+        T[x].parent=k+i;
+        T[y].parent=k+i;
+    
+        T[k+i].w = m+n;
+        T[k+i].lchild=x;
+        T[k+i].rchild=y;
+      }
+    }
 
 
 # 五. 图
