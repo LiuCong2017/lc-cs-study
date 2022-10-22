@@ -428,9 +428,52 @@
       end
 
 > 2. 读者-写者问题
+>> - (1) 全局信号量readcount用于对进入共享区对读进程计数
+>> - (2) 互斥信号量rmutex用于对多个进程共享对全局变量readcount的互斥访问
+>> - (3) 互斥信号量wmutex用于实现读操作与写操作的互斥，以及写操作与写操作的互斥
+
+    writer: //写进程
+    begin:
+        wiat(wmutex);
+    ...
+    writing operation;
+    ...
+        signal(wmutex);
+    end;
+    
+    reader: //读进程
+    begin:
+        wait(rmutex);
+        if readcount=0 then wait (wmutex);
+        readcount++;
+        signal(rmutex);
+        ...
+        reading file from D;
+        ...
+        wait(rmutex);
+        readcount--;
+        if readcount=0 then signal(wmutex);
+        signal(rmutex);
+        end;
 
 ##### 五、管程
 > 1. 管程的基本概念
+> > - (1) 管程的定义
+
+    type moniter-name = moniter
+        variable declarations;
+        procedure entryp1(...)
+        begin...end;
+        ...
+        procedure entrypn(..)
+        begin...end;
+        begin initialization code;
+    end
+
+> > - (2) 对管程的说明
+
+
+
 > 2. 管程的应用
 
 ### 第五节 进程通信
