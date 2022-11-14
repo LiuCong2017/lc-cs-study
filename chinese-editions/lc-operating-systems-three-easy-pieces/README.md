@@ -1,3 +1,3 @@
 #### Author:
-> Remzi H. Arpaci-Dusseau
-> Andrea C. Arpaci-Dusseau
+> - Remzi H. Arpaci-Dusseau
+> - Andrea C. Arpaci-Dusseau
