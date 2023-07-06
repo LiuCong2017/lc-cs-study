@@ -6,7 +6,7 @@ int main()
 {
     Student *stu = new Student;
     stu->name = "Kavin";
-    stu->age = 25;
+    stu->age = 20;
     stu->score = 80;
     stu->say();
 
